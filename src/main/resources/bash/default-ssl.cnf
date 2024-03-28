@@ -1,0 +1,31 @@
+[req]
+distinguished_name = req_distinguished_name
+prompt = no
+x509_extensions     = usr_cert
+
+[req_distinguished_name]
+C = NL
+ST = Utrecht
+L = Utrecht
+O = Payments
+OU = Payments Labs
+CN = payments.test.com
+
+
+[ usr_cert ]
+# Extensions for client certificates (`man x509v3_config`).
+basicConstraints = CA:FALSE
+nsCertType = client, email
+nsComment = "OpenSSL Generated Client Certificate"
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid,issuer
+keyUsage = critical, nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage = clientAuth, emailProtection
+subjectAltName = @alt_names
+
+
+[alt_names]
+IP.1 = 127.0.0.1
+IP.1 = 127.0.0.2
+DNS.1 = localhost
+DNS.2 = localhost.com
